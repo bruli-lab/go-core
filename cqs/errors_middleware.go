@@ -20,7 +20,7 @@ type QueryHandlerMiddleware func(h QueryHandler) QueryHandler
 
 func NewQueryHndErrorMiddleware(logger *slog.Logger, tracer trace.Tracer) QueryHandlerMiddleware {
 	return func(h QueryHandler) QueryHandler {
-		return queryHandlerFunc(func(ctx context.Context, q Query) (any, error) {
+		return QueryHandlerFunc(func(ctx context.Context, q Query) (any, error) {
 			ctx, span := tracer.Start(ctx, "queryHndErrorMiddleware")
 			defer span.End()
 			result, err := h.Handle(ctx, q)
