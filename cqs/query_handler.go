@@ -34,8 +34,8 @@ type QueryHandler interface {
 	Handle(ctx context.Context, query Query) (any, error)
 }
 
-type queryHandlerFunc func(ctx context.Context, query Query) (any, error)
+type QueryHandlerFunc func(ctx context.Context, query Query) (any, error)
 
-func (f queryHandlerFunc) Handle(ctx context.Context, query Query) (any, error) {
+func (f QueryHandlerFunc) Handle(ctx context.Context, query Query) (any, error) {
 	return f(ctx, query)
 }
