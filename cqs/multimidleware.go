@@ -9,3 +9,13 @@ func CommandHandlerMultiMiddleware(middlewares ...CommandHandlerMiddleware) Comm
 		return CommandHandlerFunc(handler.Handle)
 	}
 }
+
+func QueryHandlerMultiMiddleware(middlewares ...QueryHandlerMiddleware) QueryHandlerMiddleware {
+	return func(h QueryHandler) QueryHandler {
+		handler := h
+		for _, m := range middlewares {
+			handler = m(handler)
+		}
+		return QueryHandlerFunc(handler.Handle)
+	}
+}
