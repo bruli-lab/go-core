@@ -5,10 +5,10 @@ description: Setup Go, cache modules and install Task
 runs:
   using: composite
   steps:
-    - name: Set up Go 1.27.0
+    - name: Set up Go 1.27.3
       uses: actions/setup-go@v6
       with:
-        go-version: '1.27.0'
+        go-version: '1.27.3'
         cache: false
 
     - name: Cache Go modules
