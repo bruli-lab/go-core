@@ -26,7 +26,7 @@ func NewBus() Bus {
 }
 
 func (e Bus) Subscribe(eventName string, listeners ...Listener) {
-	e[eventName] = listeners
+	e[eventName] = append(e[eventName], listeners...)
 }
 
 func (e Bus) Dispatch(ctx context.Context, ev Event) error {
@@ -53,19 +53,23 @@ func (e Bus) Dispatch(ctx context.Context, ev Event) error {
 	}
 	wg.Wait()
 
-	err := errors.Join(errs...)
-	if err != nil {
-		return NewDispatchError(err.Error(), ev.EventName())
+	if err := errors.Join(errs...); err != nil {
+		return DispatchError{msg: err.Error(), eventName: ev.EventName(), err: err}
 	}
 	return nil
 }
 
 type DispatchError struct {
 	msg, eventName string
+	err            error
 }
 
 func (d DispatchError) Error() string {
 	return fmt.Sprintf("failed to dispatch event %s error: %s", d.eventName, d.msg)
+}
+
+func (d DispatchError) Unwrap() error {
+	return d.err
 }
 
 func NewDispatchError(msg string, eventName string) DispatchError {
