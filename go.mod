@@ -29,7 +29,7 @@ require (
 	golang.org/x/telemetry v0.0.0-20260924152758-ed294f943157 // indirect
 	golang.org/x/tools v0.51.0 // indirect
 	golang.org/x/vuln v1.7.0 // indirect
-	mvdan.cc/gofumpt v0.8.0 // indirect
+	mvdan.cc/gofumpt v0.12.0 // indirect
 )
 
 tool (
