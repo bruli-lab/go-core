@@ -82,3 +82,4 @@ golang.org/x/vuln v1.10.0 h1:W/Im35AGknunDiqBysVe9VoMfaeTJE7lptrD+1s//aE=
 golang.org/x/vuln v1.10.0/go.mod h1:kNpckBWtSQiR+USd0ZgdhJCCWf/ZXOl1+n3Wybcj8eE=
 mvdan.cc/gofumpt v0.8.0 h1:nZUCeC2ViFaerTcYKstMmfysj6uhQrA2vJe+2vwGU6k=
 mvdan.cc/gofumpt v0.8.0/go.mod h1:vEYnSzyGPmjvFkqJWtXkh79UwPWP9/HMxQdGEXZHjpg=
+mvdan.cc/gofumpt v0.12.0/go.mod h1:SmBHHrljiZu/uoypeKup3rFzP6eoC9UwCp2iH5E3jZA=
